@@ -22,6 +22,12 @@ namespace ApiTask1.Controllers
         {
             return Ok(await _context.Students.ToListAsync());
         }
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get(int? id)
+        {
+            var data = await _context.Students.FindAsync(id);
+            return Ok(data);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create (StudentCreateDTO student) 
